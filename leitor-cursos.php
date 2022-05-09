@@ -1,12 +1,10 @@
 <?php
 
-$arquivo = fopen('lista-cursos.txt', 'r');
+// A função file_get_contents lê todo um arquivo e retorna o seu conteúdo.
+// Note que não é necessário informar o modo de abrir e fechar o arquivo.
+$cursos = file_get_contents('lista-cursos.txt');
 
-// A função filesize retorna o número de bytes do arquivo.
-$tamanhoDoArquivo = filesize('lista-cursos.txt'); 
+// É possível obter um array de linhas do arquivo, com a função file:
+$cursos = file('lista-cursos.txt');
 
-// A função fread lê um arquivo até um certo número de bytes.
-$cursos = fread($arquivo, $tamanhoDoArquivo);
-echo $cursos;
-
-fclose($arquivo); // Fecha o arquivo, liberando-o para uso por outros programas.
+var_dump($cursos);
