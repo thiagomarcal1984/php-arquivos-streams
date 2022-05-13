@@ -14,13 +14,15 @@ $arquivoCsv = fopen('cursos.csv', 'w');
 //      não acrescenta as quebras de linha.
 
 foreach ($meusCursos as $curso) {
-    $linha = [trim($curso), 'Sim'];
+    $linha = [trim(utf8_decode($curso)), 'Sim'];
+    // A função utf8_decode transforma o texto UTF-8 para o padrão ISO-8895-1.
     fputcsv($arquivoCsv, $linha, ';');
     // fwrite($arquivoCsv, implode(';', $linha));
 }
 
 foreach ($outrosCursos as $curso) {
-    $linha = [trim($curso), 'Não' . PHP_EOL];
+    $linha = [trim(utf8_decode($curso)), utf8_decode('Não') . PHP_EOL];
+    // A função utf8_decode transforma o texto UTF-8 para o padrão ISO-8895-1.
     // fputcsv($arquivoCsv, $linha, ';');
     fwrite($arquivoCsv, implode(';', $linha));
 }

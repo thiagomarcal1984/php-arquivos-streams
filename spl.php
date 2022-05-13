@@ -5,7 +5,8 @@ $arquivoCursos = new SplFileObject('cursos.csv');
 
 while (!$arquivoCursos->eof()) {
     $linha = $arquivoCursos->fgetcsv(';');
-    echo $linha[0] . PHP_EOL; // Exibe só a primeira coluna do CSV.
+    echo utf8_encode($linha[0]) . PHP_EOL; // Exibe só a primeira coluna do CSV.
+    // A função utf8_encode converte caracteres do padrão ISO 8859-1 para UTF-8.
 }
 
 echo "Timestamp do arquivo: " . $arquivoCursos->getCTime() . PHP_EOL;
@@ -21,5 +22,6 @@ echo "Data gerada a partir do timestamp: " . $date->format('d/m/Y') . PHP_EOL;
 $arquivo = new SplFileObject('lista-cursos.txt');
 
 foreach ($arquivo as $linha) {
-    echo $linha;
+    echo utf8_encode($linha);
+    // A função utf8_encode converte caracteres do padrão ISO 8859-1 para UTF-8.
 }
